@@ -7,34 +7,15 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserServiceimpl implements UserService{
+public class UserServiceimpl{
 	@Autowired
 	UserDAO userDAO;
 
-	@Override
-	public int insertUser(UserVO vo) {
-		return userDAO.insertUser(vo);
+	public UserVO getUser(UserVO vo) {
+		return userDAO.getUser(vo);
 	}
 
-	@Override
-	public int deleteUser(int id) {
-		return userDAO.deleteUser(id);
-	}
-
-	@Override
-	public int updateUser(UserVO vo) {
-		return userDAO.updateUser(vo);
-	}
-
-	@Override
-	public UserVO getUser(int seq) {
-		return userDAO.getUser(seq);
-	}
-
-	@Override
-	public List<UserVO> getUserList() {
-		return userDAO.getUserList();
-	}
+	
 
 	
 }

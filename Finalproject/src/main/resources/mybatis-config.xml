@@ -6,7 +6,9 @@
 	<typeAliases>
 		<typeAlias alias="subject"
 			type="com.mycompany.my.board.SubjectVO" />
-		<typeAlias alias="subuser"
+		<typeAlias alias="subjectuser"
+			type="com.mycompany.my.subjectuser.SubjectUserVO" />
+		<typeAlias alias="user"
 			type="com.mycompany.my.user.UserVO" />
 	</typeAliases>
 </configuration>

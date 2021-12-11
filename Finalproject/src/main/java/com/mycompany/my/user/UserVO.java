@@ -1,40 +1,28 @@
 package com.mycompany.my.user;
 
 public class UserVO {
-	private int seq;
-	private int subid;
-	private int semester;
+
 	private String userid;
-	private String passwd;
-	
-	public int getSeq() {
-		return seq;
-	}
-	public void setSeq(int seq) {
-		this.seq = seq;
-	}
-	public int getSubid() {
-		return subid;
-	}
-	public void setSubid(int subid) {
-		this.subid = subid;
-	}
-	public int getSemester() {
-		return semester;
-	}
-	public void setSemester(int semester) {
-		this.semester = semester;
-	}
+	private String username;
+	private String password;
 	public String getUserid() {
 		return userid;
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public String getPasswd() {
-		return passwd;
+	public String getUsername() {
+		return username;
 	}
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
+	public void setUsername(String username) {
+		this.username = username;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 }
