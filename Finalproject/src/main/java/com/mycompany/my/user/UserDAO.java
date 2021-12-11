@@ -15,7 +15,7 @@ public class UserDAO {
 
 
 	public UserVO getUser(UserVO vo) {
-		UserVO one = sqlSession.selectOne("tUser.getUser", vo);
+		UserVO one = sqlSession.selectOne("User.getUser", vo);
 		return one;
 	}
 

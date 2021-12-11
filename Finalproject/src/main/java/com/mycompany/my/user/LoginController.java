@@ -29,13 +29,13 @@ public class LoginController {
 		if(loginvo != null) {
 			System.out.println("로그인 성공! ");
 			session.setAttribute("login", loginvo);
-			returnURL = "redirect:/board/list";
+			returnURL = "redirect:/subjectuser/list";
 		}
 		else {
 			System.out.println("로그인 실패! ");
 			returnURL = "redirect:/login/login";
 		}
-		return "returnURL";
+		return returnURL;
 	}
 	@RequestMapping(value="/logout")
 	public String logout(HttpSession session) {

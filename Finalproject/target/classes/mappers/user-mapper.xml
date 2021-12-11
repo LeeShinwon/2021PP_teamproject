@@ -4,7 +4,7 @@
 
 	
 	<select id="getUser" resultType="user">
-		select userid, username from user where userid=#{userid} and password=#{password}
+		select userid, username from member2 where userid=#{userid} and password=#{password}
 	</select>
 	
 
