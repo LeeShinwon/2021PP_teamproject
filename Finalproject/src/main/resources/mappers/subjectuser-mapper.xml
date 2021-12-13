@@ -3,12 +3,12 @@
 <mapper namespace="SubjectUser">
 
 	<insert id="insertUser">
-		insert into subjectmember (subid, semester)
-		values(#{subid}, #{semester} )
+		insert into subjectmember (userid, semester,area1,area2, area3, subname, credit, pro, design, separ, bsm)
+		values(#{userid}, #{semester},#{area1},#{area2},#{area3},#{subname},#{credit},#{pro},#{design},#{separ},#{bsm} )
 	</insert>
 	<update id="updateUser">
 		update subjectmember
-		set subid=#{subid}, semester=#{semester}}
+		set useidid=#{userid}, semester=#{semester},area1=#{area1},area2=#{area2},area3=#{area3},subname=#{subname},credit=#{credit},pro=#{pro},design=#{design},separ=#{separ},bsm=#{bsm}}
 		where seq=#{seq}
 	</update>
 	<delete id="deleteUser">
@@ -18,7 +18,7 @@
 		select * from subjectmember where seq=#{seq}
 	</select>
 	<select id="getUserList" resultType="subjectuser">
-		select * from subjectmember order by seq=#{seq}
+		select * from subjectmember order by semester=#{semester}
 	</select>
 
 

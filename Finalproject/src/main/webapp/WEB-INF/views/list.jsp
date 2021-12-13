@@ -39,14 +39,14 @@
 
 <table id="list" width="90%">
 <tr>
-	<th>subid</th>
+	<th>userid</th>
 	<th>semester</th>
 	
 </tr>
 	
 	<c:forEach items="${list}" var="u">
 		<tr>
-			<td>${u.getSubid()}</td>
+			<td>${u.userid}</td>
 			<td>${u.semester}</td>
 			
 			<td><a href="editform/${u.seq}">글수정 </a></td>
@@ -54,7 +54,7 @@
 		</tr>
 	</c:forEach>
 </table>
-<br/><button type="button" onclick="location.href='add'">새글쓰기</button>
+<br/><button type="button" onclick="location.href='add'">추가하기</button>
 
 
 </body>
