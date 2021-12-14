@@ -13,7 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.my.board.SubjectService;
 import com.mycompany.my.board.SubjectVO;
@@ -69,14 +69,14 @@ public class SubjectUserController {
 	public String addPostOK(SubjectVO vo,HttpServletRequest request,Model model,SubjectUserVO suvo) {
 		System.out.println(vo.getArea1());
 		System.out.println(suvo.getArea2());
-		/*int i = userService.insertSubject(vo);//userService로 변경 
+		int i = userService.insertUser(suvo);//userService로 변경 
 		if(i==0) {
 			System.out.println("데이터 추가 실패 ");
 			
 		}
 		else {
 			System.out.println("데이터 추가 성공 ");
-		}*/
+		}
 		List<SubjectUserVO> l = new ArrayList<SubjectUserVO>();
 		HttpSession session = request.getSession();
 		
@@ -92,5 +92,68 @@ public class SubjectUserController {
 		
 		return "redirect:list";
 	}
+	@RequestMapping(value = "/subjectuser/course", method = RequestMethod.GET)
+	public String course(Model model,HttpServletRequest request) {
+		//model.addAttribute("list", userService.getUserList());
+		List<SubjectUserVO> l = new ArrayList<SubjectUserVO>();
+		HttpSession session = request.getSession();
+		
+		for(SubjectUserVO vo:userService.getUserList()) {
+			
+			if(vo.getUserid().equals((session).getAttribute("login"))&& vo.getSemester()==2) {
+				l.add(vo);
+				
+			}
+			
+		}
+		model.addAttribute("list", l);
+		
+	
+		return "list";
+	}
+	
+	@RequestMapping(value = "/subjectuser/search", method = RequestMethod.GET)
+	public String search(Model model, HttpServletRequest request) {
+		String area = request.getParameter("area");
+		String separ = request.getParameter("separ");
+		String subname = request.getParameter("subname");
+		
+		List<SubjectVO> l = new ArrayList<SubjectVO>();
+		List<SubjectVO> l2 = new ArrayList<SubjectVO>();
+		
+		if(area.equals("전체") && separ.equals("전체")) {
+			l=subjectService.getSubjectList();	
+			
+		}
+		else if (!area.equals("전체") && separ.equals("전체")){
+			l=subjectService.getSubjectListS(area);	
+		}
+		else if (area.equals("전체") && !separ.equals("전체")){
+			for(SubjectVO vo:subjectService.getSubjectList()) {
+				if(vo.getSepar().equals(separ)) l.add(vo);
+			}
+		}
+		else if (!area.equals("전체") && !separ.equals("전체")){
+			for(SubjectVO vo:subjectService.getSubjectListS(area)) {
+				if(vo.getSepar().equals(separ)) l.add(vo);
+			}
+		}
+		
+		if(!subname.equals("")) {
+			for(SubjectVO vo:l) {
+				if(vo.getSubname().contains(subname)) l2.add(vo);
+			}
+			model.addAttribute("addpostform", l2);
+		}
+		else {
+			model.addAttribute("addpostform", l);
+		}
+		
+		
+		
+		
+		return "addpostform";
+	}
+	
 }
 

@@ -39,5 +39,10 @@ public class SubjectServicelmpl implements SubjectService {
 	public List<SubjectVO> getSubjectList() {
 		return subjectDAO.getSubjectList();
 	}
+	@Override
+	public List<SubjectVO> getSubjectListS(String a) {
+		System.out.println(a);
+		return subjectDAO.getSubjectListS(a);
+	}
 
 }

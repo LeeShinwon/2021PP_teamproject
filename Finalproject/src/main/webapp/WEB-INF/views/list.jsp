@@ -34,7 +34,24 @@
 	}
 </script>
 </head>
-<body>
+<body><div id="sidebar-wrapper">
+	<ul class="sidebar-nav">
+		<li class="sidebar-brand"><a href="/subjectuser/list">졸업 학점
+				관리</a></li>
+		<li class="selected_menu"><a href="course">1학기</a></li>
+		<li><a href="/course2">2학기</a></li>
+		<li><a href="/course3">3학기</a></li>
+		<li><a href="/course4">4학기</a></li>
+		<li><a href="/course5">5학기</a></li>
+		<li><a href="/course6">6학기</a></li>
+		<li><a href="/course7">7학기</a></li>
+		<li><a href="/course8">8학기</a></li>
+		<li><a href="/course9">졸업학점</a></li>
+	</ul>
+	<button type="button" class="btn btn-secondary btn-block"
+		style="position: absolute; bottom: 0;">add</button>
+</div>
+
 <h1>게시판</h1>
 
 <table id="list" width="90%">

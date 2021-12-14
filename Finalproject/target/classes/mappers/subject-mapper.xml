@@ -21,6 +21,10 @@
 	</select>
 	<select id="getSubjectList" resultType="subject">
 		select * from subject order
-		by id desc
+		by id 
+	</select>
+	
+	<select id="getSubjectList2" resultType="subject">
+		select * from subject where area1=#{area1} order by id 
 	</select>
 </mapper>

@@ -35,4 +35,11 @@ public class SubjectDAO {
 		List<SubjectVO> list = sqlSession.selectList("mapper.getSubjectList");
 		return list;
 	}
+	
+	public List<SubjectVO> getSubjectListS(String area) {
+		System.out.println(area+"h");
+		List<SubjectVO> list = sqlSession.selectList("mapper.getSubjectList2", area);
+		System.out.println(area+"hh");
+		return list;
+	}
 }

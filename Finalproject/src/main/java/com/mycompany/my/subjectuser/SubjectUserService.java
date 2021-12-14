@@ -14,4 +14,5 @@ public interface SubjectUserService {
 	public SubjectUserVO getUser(int seq);
 
 	public List<SubjectUserVO> getUserList();
+	
 }

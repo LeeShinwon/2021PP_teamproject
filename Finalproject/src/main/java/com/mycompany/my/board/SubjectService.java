@@ -12,4 +12,6 @@ public interface SubjectService {
 	public SubjectVO getSubject(int seq);
 
 	public List<SubjectVO> getSubjectList();
+	
+	public List<SubjectVO> getSubjectListS(String area) ;
 }
