@@ -32,28 +32,37 @@
 		var a = confirm("정말로 삭제하겠습니까?");
 		if(a) location.href='deleteok/' + id;
 	}
+	function go(semester){
+		location.href=semester;
+	}
+	
+	
+
+
 </script>
 </head>
 <body>
 
-<div id="sidebar-wrapper">
-	<ul class="sidebar-nav" name="course" id="course">
+
+
+	<div id="sidebar">
+	<form name="test" id="test" method="post">
+	<ul class="sidebar" name="sidebar" id="sidebar">
 		<li class="sidebar-brand"><a href="/subjectuser/list">졸업 학점
 				관리</a></li>
-		<li class="selected_menu"><a href="course1" value="1">1학기</a></li>
-		<li><a href="course2">2학기</a></li>
-		<li><a href="course3">3학기</a></li>
-		<li><a href="course4">4학기</a></li>
-		<li><a href="course5">5학기</a></li>
-		<li><a href="course6">6학기</a></li>
-		<li><a href="course7">7학기</a></li>
-		<li><a href="course8">8학기</a></li>
-		<li><a href="course9">졸업학점</a></li>
+		<li class="selected_menu"><a href="javascript:go(1)">1학기</a></li>
+		<li><a href="javascript:go(2)">2학기</a></li>
+		<li><a href="javascript:go(3)">3학기</a></li>
+		<li><a href="javascript:go(4)">4학기</a></li>
+		<li><a href="javascript:go(5)">5학기</a></li>
+		<li><a href="javascript:go(6)">6학기</a></li>
+		<li><a href="javascript:go(7)">7학기</a></li>
+		<li><a href="javascript:go(8)">8학기</a></li>
+		<li><a href="#" value="졸업학점">졸업학점</a></li>
 	</ul>
-	<button type="button" class="btn btn-secondary btn-block"
-		style="position: absolute; bottom: 0;">add</button>
+	</form>
 </div>
-</form>
+
 
 <h1>게시판</h1>
 
@@ -69,8 +78,8 @@
 			<td>${u.userid}</td>
 			<td>${u.semester}</td>
 			
-			<td><a href="editform/${u.seq}">글수정 </a></td>
-			<td><a href="javascript:delete_ok('${u.seq}')">글삭제 </a></td>
+			<td><a href="editform/${u.seq}">수정 </a></td>
+			<td><a href="javascript:delete_ok('${u.seq}')">삭제 </a></td>
 		</tr>
 	</c:forEach>
 </table>

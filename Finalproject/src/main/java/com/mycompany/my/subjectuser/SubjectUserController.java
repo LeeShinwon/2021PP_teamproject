@@ -45,6 +45,25 @@ public class SubjectUserController {
 
 		return "list";
 	}
+	@RequestMapping(value = "/subjectuser/{semester}", method = RequestMethod.GET)
+	public String usersemesterlist(Model model, HttpServletRequest request,@PathVariable("semester") int semester) {
+		System.out.println(semester);
+
+		List<SubjectUserVO> l = new ArrayList<SubjectUserVO>();
+		HttpSession session = request.getSession();
+
+		for (SubjectUserVO vo : userService.getUserList()) {
+
+			if (vo.getUserid().equals((session).getAttribute("login"))&&vo.getSemester()==semester) {
+				l.add(vo);
+
+			}
+
+		}
+		model.addAttribute("list", l);
+
+		return "list";
+	}
 
 	@RequestMapping(value = "/subjectuser/add", method = RequestMethod.GET)
 	public String addPost(Model model) {
@@ -63,31 +82,16 @@ public class SubjectUserController {
 		// System.out.println(userService.getUserList().get(0).getUserid());
 		return "addpostform2";
 	}
+	
+	@RequestMapping(value = "/subjectuser/addok", method = RequestMethod.GET)
+	public String addPostOK(SubjectUserVO vo) {
+		System.out.println(vo.getArea1());
 
-	@RequestMapping(value = "/subjectuser/addok", method = RequestMethod.POST)
-	public String addPostOK(SubjectVO vo, HttpServletRequest request, Model model, SubjectUserVO suvo) {
-		int i = userService.insertUser(suvo);// userService로 변경
-		if (i == 0) {
-			System.out.println("데이터 추가 실패 ");
-
-		} else {
-			System.out.println("데이터 추가 성공 ");
-		}
-		List<SubjectUserVO> l = new ArrayList<SubjectUserVO>();
-		HttpSession session = request.getSession();
-
-		for (SubjectUserVO svo : userService.getUserList()) {
-
-			if (svo.getUserid().equals((session).getAttribute("login"))) {
-				l.add(svo);
-
-			}
-
-		}
-		model.addAttribute("list", l);
 
 		return "redirect:list";
 	}
+	
+	
 
 	@RequestMapping(value = "/subjectuser/course1", method = RequestMethod.GET)
 	public String course(Model model, HttpServletRequest request) {
@@ -138,6 +142,20 @@ public class SubjectUserController {
 		}
 
 		return "addpostform";
+	}
+	
+	@RequestMapping(value = "/subjectuser/deleteok/{id}", method = RequestMethod.GET)
+	public String deletePost(@PathVariable("id") int id) {
+		int i = userService.deleteUser(id);
+		if(i==0) {
+			System.out.println("데이터 삭제  실패 ");
+			
+		}
+		else {
+			System.out.println("데이터 삭제 성공 ");
+		}
+		
+		return "redirect:../list";
 	}
 
 }
