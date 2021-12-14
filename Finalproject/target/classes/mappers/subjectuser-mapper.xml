@@ -8,7 +8,7 @@
 	</insert>
 	<update id="updateUser">
 		update subjectmember
-		set useidid=#{userid}, semester=#{semester},area1=#{area1},area2=#{area2},area3=#{area3},subname=#{subname},credit=#{credit},pro=#{pro},design=#{design},separ=#{separ},bsm=#{bsm}}
+		set userid=#{userid}, semester=#{semester},area1=#{area1},area2=#{area2},area3=#{area3},subname=#{subname},credit=#{credit},pro=#{pro},design=#{design},separ=#{separ},bsm=#{bsm}
 		where seq=#{seq}
 	</update>
 	<delete id="deleteUser">

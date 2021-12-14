@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import com.mycompany.my.board.SubjectService;
 import com.mycompany.my.board.SubjectVO;
 
@@ -26,6 +25,7 @@ public class SubjectUserController {
 	SubjectUserService userService;
 	@Autowired
 	SubjectService subjectService;
+	
 
 	@RequestMapping(value = "/subjectuser/list", method = RequestMethod.GET)
 	public String userlist(Model model, HttpServletRequest request) {
@@ -74,29 +74,30 @@ public class SubjectUserController {
 	}
 
 	@RequestMapping(value = "/subjectuser/add/{id}", method = RequestMethod.GET)
-	public String addPostform(@PathVariable("id") int id, Model model, HttpServletRequest request) {
-		model.addAttribute("userid", request.getSession().getAttribute("login"));
+	public String addPostform(@PathVariable("id") int id, Model model) {
 
 		SubjectVO subjectVO = subjectService.getSubject(id);
 		model.addAttribute("subjectVO", subjectVO);
-		// System.out.println(subjectVO.getArea1());
-		// System.out.println(userService.getUserList().get(0).getUserid());
 		return "addpostform2";
 	}
 	
 	@RequestMapping(value = "/subjectuser/addok", method = RequestMethod.POST)
 	public String addPostOK(HttpServletRequest request) {
-		System.out.println(request.getParameter("userid"));
-		String userid = request.getParameter("userid");
+		
+		HttpSession session = request.getSession();
+		String userid = request.getSession().getAttribute("login").toString();
 		String area1 = request.getParameter("area1");
 		String area2 = request.getParameter("area2");
 		String area3 = request.getParameter("area3");
+		
 		String subname = request.getParameter("subname");
 		String separ = request.getParameter("separ");
 		int credit = Integer.parseInt(request.getParameter("credit"));
 		int pro = Integer.parseInt(request.getParameter("pro"));
 		int design = Integer.parseInt(request.getParameter("design"));
-		int bsm = Integer.parseInt(request.getParameter("bsmt"));
+		int bsm = Integer.parseInt(request.getParameter("bsm"));
+		int semester = Integer.parseInt(request.getParameter("semester"));
+		
 		SubjectUserVO vo = new SubjectUserVO();
 		vo.setArea1(area1);
 		vo.setArea2(area2);
@@ -106,7 +107,7 @@ public class SubjectUserController {
 		vo.setCredit(credit);
 		vo.setPro(pro);
 		vo.setSepar(separ);
-		vo.setSemester(bsm);
+		vo.setSemester(semester);
 		vo.setSubname(subname);
 		vo.setUserid(userid);
 		int i = userService.insertUser(vo);
@@ -172,6 +173,27 @@ public class SubjectUserController {
 		}
 
 		return "addpostform";
+	}
+	@RequestMapping(value = "/subjectuser/editform/{seq}", method = RequestMethod.GET)
+	public String editPost(@PathVariable("seq") int seq, Model model) {
+		SubjectUserVO subjectVO = userService.getUser(seq);
+		model.addAttribute("subjectVO", subjectVO);
+		
+		return "editform";
+	}
+	
+	@RequestMapping(value = "/subjectuser/editok", method = RequestMethod.POST)
+	public String editPostOK(HttpServletRequest request, SubjectUserVO vo) {
+		int i = userService.updateUser(vo);
+		if(i==0) {
+			System.out.println("데이터 수정 실패 ");
+			
+		}
+		else {
+			System.out.println("데이터 수정 성공 ");
+		}
+		
+		return "redirect:list";
 	}
 	
 	@RequestMapping(value = "/subjectuser/deleteok/{id}", method = RequestMethod.GET)

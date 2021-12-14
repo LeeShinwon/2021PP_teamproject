@@ -16,10 +16,11 @@
 	<h1>추가</h1>
 
 
-	<form:form commandName="subjectVO" action="../addok" method="post">
-		<form:hidden path="id" />
+	<form:form commandName="subjectVO" action="../editok" method="post">
+		<form:hidden path="seq" />
 		<table>
 			<tr>
+				<tr><td>아이디</td><td><form:input path="userid"/></td></tr>
 				<tr><td>영역1</td><td><form:input path="area1"/></td></tr>
 				<tr><td>영역2</td><td><form:input path="area2"/></td></tr>
 				<tr><td>영역3</td><td><form:input path="area3"/></td></tr>
@@ -28,12 +29,11 @@
 				<tr><td>학점</td><td><form:input path="credit"/></td></tr>
 				<tr><td>BSM</td><td><form:input path="bsm"/></td></tr>
 				<tr><td>전문교양</td><td><form:input path="pro"/></td></tr>
-				<tr><td>설계학점</td><td><form:input path="design"/></td></tr>
-				
-				<tr><td>학기</td><td><input type="text" name="semester" /></td>
+				<tr><td>설계학점</td><td><form:input path="design"/></td></tr>	
+				<tr><td>학기</td><td><form:input path="semester"/></td></tr>	
 			</tr>
 </table>
-<input type="submit" value="추가하기" />
+<input type="submit" value="수정하기" />
 
 <input type="button" value="취소하기" onclick="history.back()" />
 

@@ -68,15 +68,27 @@
 
 <table id="list" width="90%">
 <tr>
-	<th>userid</th>
-	<th>semester</th>
+	<th>아이디</th>
+	<th>영역</th>
+	<th>과목 명</th>
+	<th>이수구분</th>
+	<th>이수학점</th>
+	<th>학기</th>
+	<td>수정</td>
+	<td>삭제</td>
 	
 </tr>
 	
 	<c:forEach items="${list}" var="u">
 		<tr>
 			<td>${u.userid}</td>
+			<td>${u.area1}</td>
+			<td>${u.subname}</td>
+			<td>${u.separ}</td>
+			<td>${u.credit}</td>
 			<td>${u.semester}</td>
+
+	
 			
 			<td><a href="editform/${u.seq}">수정 </a></td>
 			<td><a href="javascript:delete_ok('${u.seq}')">삭제 </a></td>
