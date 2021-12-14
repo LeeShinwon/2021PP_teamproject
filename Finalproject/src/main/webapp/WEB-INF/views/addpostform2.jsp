@@ -16,7 +16,7 @@
 	<h1>추가</h1>
 
 
-	<form:form commandName="subjectVO" action="addok" method="get">
+	<form:form commandName="subjectVO" action="../addok" method="post">
 		<form:hidden path="id" />
 		<table>
 			<tr>

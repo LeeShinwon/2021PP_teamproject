@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import com.mycompany.my.board.SubjectService;
 import com.mycompany.my.board.SubjectVO;
 
@@ -83,14 +84,43 @@ public class SubjectUserController {
 		return "addpostform2";
 	}
 	
-	@RequestMapping(value = "/subjectuser/addok", method = RequestMethod.GET)
-	public String addPostOK(SubjectUserVO vo) {
-		System.out.println(vo.getArea1());
+	@RequestMapping(value = "/subjectuser/addok", method = RequestMethod.POST)
+	public String addPostOK(HttpServletRequest request) {
+		System.out.println(request.getParameter("userid"));
+		String userid = request.getParameter("userid");
+		String area1 = request.getParameter("area1");
+		String area2 = request.getParameter("area2");
+		String area3 = request.getParameter("area3");
+		String subname = request.getParameter("subname");
+		String separ = request.getParameter("separ");
+		int credit = Integer.parseInt(request.getParameter("credit"));
+		int pro = Integer.parseInt(request.getParameter("pro"));
+		int design = Integer.parseInt(request.getParameter("design"));
+		int bsm = Integer.parseInt(request.getParameter("bsmt"));
+		SubjectUserVO vo = new SubjectUserVO();
+		vo.setArea1(area1);
+		vo.setArea2(area2);
+		vo.setArea3(area3);
+		vo.setBsm(bsm);
+		vo.setDesign(design);
+		vo.setCredit(credit);
+		vo.setPro(pro);
+		vo.setSepar(separ);
+		vo.setSemester(bsm);
+		vo.setSubname(subname);
+		vo.setUserid(userid);
+		int i = userService.insertUser(vo);
+		if(i==0) {
+			System.out.println("데이터 추가 실패 ");
+			
+		}
+		else {
+			System.out.println("데이터 추가 성공 ");
+		}
 
 
 		return "redirect:list";
 	}
-	
 	
 
 	@RequestMapping(value = "/subjectuser/course1", method = RequestMethod.GET)
