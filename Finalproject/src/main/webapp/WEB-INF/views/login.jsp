@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div style='width:100%; text-align:center; padding-top:100px'>
-	<img src="./img/coffeetable.png" width="250"/>
+	<img src="../img/c.jpg" width="250"/>
 	<form method="post" action="loginOk">
 	<div><label>User ID: </label><input type='text' name='userid'/></div>
 	<div><label>Password: </label>

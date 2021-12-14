@@ -7,10 +7,25 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	2021년 2학기 한동대학교 실전프로젝트1
 </h1>
+<h4>기말 팀 프로젝트 과제 </h4>
 
-<P>  The time on the server is ${serverTime}. </P>
-<P>  <a href="login/login">게시판으로 이동 </a></P>
+<P>  [졸업학점계산 : 나보림, 이신원]  </P>
+<P>  <a href="login/login">입장 </a></P>
+
+
+
+
+    
+  
+
+</body>
+
+
+    
+  
+
+</body>
 </body>
 </html>

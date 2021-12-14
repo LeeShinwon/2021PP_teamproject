@@ -9,9 +9,80 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the side navigation */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+}
+
+
+/* Side navigation links */
+.sidenav a {
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color on hover */
+.sidenav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the content */
+.content {
+  margin-left: 200px;
+  padding-left: 20px;
+}
+</style>
+<style>
+#list {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+#list td, #list th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align:center;
+}
+#list tr:nth-child(even){background-color: #f2f2f2;}
+#list tr:hover {background-color: #ddd;}
+#list th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+.content {
+  margin-left: 200px;
+  padding-left: 20px;
+}
+</style>
+
 <body>
 
-<h1>Add New Post</h1>
+<%@ include file="/WEB-INF/views/header.jsp" %>
+<div class="content">
+<h2>추가할 항목 선택</h2>
 
 <form action="search" method="get">
 <table id="add">
@@ -66,6 +137,7 @@
 	<th>과목 명</th>
 	<th>이수구분</th>
 	<th>학점</th>
+	<th>선택</th>
 	
 </tr>
 	
@@ -75,7 +147,7 @@
 			<td>${u.subname}</td>
 			<td>${u.separ}</td>
 			<td>${u.credit}</td>
-			<td><td><a href="add/${u.id}">선택</a></td></td>
+			<td><a href="add/${u.id}">선택</a></td>
 			
 			
 		</tr>
@@ -84,6 +156,7 @@
 <input type="button" value="취소하기" onclick="history.back()" />
 </form>
 
-
+</form>
+</div>
 </body>
 </html>

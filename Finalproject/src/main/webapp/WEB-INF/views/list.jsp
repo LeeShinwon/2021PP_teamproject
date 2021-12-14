@@ -6,6 +6,51 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>free board</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the side navigation */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+}
+
+
+/* Side navigation links */
+.sidenav a {
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color on hover */
+.sidenav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the content */
+.content {
+  margin-left: 200px;
+  padding-left: 20px;
+}
+</style>
+
 <style>
 #list {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -23,8 +68,12 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: #006bb3;
+  background-color: black;
   color: white;
+}
+.content {
+  margin-left: 200px;
+  padding-left: 20px;
 }
 </style>
 <script>
@@ -43,29 +92,10 @@
 </head>
 <body>
 
-
-
-	<div id="sidebar">
-	<form name="test" id="test" method="post">
-	<ul class="sidebar" name="sidebar" id="sidebar">
-		<li class="sidebar-brand"><a href="/subjectuser/list">졸업 학점
-				관리</a></li>
-		<li class="selected_menu"><a href="javascript:go(1)">1학기</a></li>
-		<li><a href="javascript:go(2)">2학기</a></li>
-		<li><a href="javascript:go(3)">3학기</a></li>
-		<li><a href="javascript:go(4)">4학기</a></li>
-		<li><a href="javascript:go(5)">5학기</a></li>
-		<li><a href="javascript:go(6)">6학기</a></li>
-		<li><a href="javascript:go(7)">7학기</a></li>
-		<li><a href="javascript:go(8)">8학기</a></li>
-		<li><a href="#" value="졸업학점">졸업학점</a></li>
-	</ul>
-	</form>
-</div>
-
-
 <h1>게시판</h1>
-
+<%@ include file="/WEB-INF/views/header.jsp" %>
+<div class="content">
+<h2>졸업학점계산기</h2>
 <table id="list" width="90%">
 <tr>
 	<th>아이디</th>
@@ -96,6 +126,9 @@
 	</c:forEach>
 </table>
 <br/><button type="button" onclick="location.href='add'">추가하기</button>
+
+</div>
+
 
 
 </body>
