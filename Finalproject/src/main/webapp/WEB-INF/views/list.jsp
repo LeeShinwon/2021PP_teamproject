@@ -34,23 +34,26 @@
 	}
 </script>
 </head>
-<body><div id="sidebar-wrapper">
-	<ul class="sidebar-nav">
+<body>
+
+<div id="sidebar-wrapper">
+	<ul class="sidebar-nav" name="course" id="course">
 		<li class="sidebar-brand"><a href="/subjectuser/list">졸업 학점
 				관리</a></li>
-		<li class="selected_menu"><a href="course">1학기</a></li>
-		<li><a href="/course2">2학기</a></li>
-		<li><a href="/course3">3학기</a></li>
-		<li><a href="/course4">4학기</a></li>
-		<li><a href="/course5">5학기</a></li>
-		<li><a href="/course6">6학기</a></li>
-		<li><a href="/course7">7학기</a></li>
-		<li><a href="/course8">8학기</a></li>
-		<li><a href="/course9">졸업학점</a></li>
+		<li class="selected_menu"><a href="course1" value="1">1학기</a></li>
+		<li><a href="course2">2학기</a></li>
+		<li><a href="course3">3학기</a></li>
+		<li><a href="course4">4학기</a></li>
+		<li><a href="course5">5학기</a></li>
+		<li><a href="course6">6학기</a></li>
+		<li><a href="course7">7학기</a></li>
+		<li><a href="course8">8학기</a></li>
+		<li><a href="course9">졸업학점</a></li>
 	</ul>
 	<button type="button" class="btn btn-secondary btn-block"
 		style="position: absolute; bottom: 0;">add</button>
 </div>
+</form>
 
 <h1>게시판</h1>
 
