@@ -61,9 +61,11 @@ public class SubjectUserController {
 			}
 
 		}
+		request.setAttribute("semester", semester);
 		model.addAttribute("list", l);
+		
 
-		return "list";
+		return "list2";
 	}
 
 	@RequestMapping(value = "/subjectuser/add", method = RequestMethod.GET)
@@ -209,5 +211,150 @@ public class SubjectUserController {
 		
 		return "redirect:../list";
 	}
+	
+	@RequestMapping(value = "/subjectuser/total", method = RequestMethod.GET)
+	public String totalCheck(Model model, HttpServletRequest request) {
+		// model.addAttribute("list", userService.getUserList());
+		int zero = 0; // 채플
+		int one = 0;
+		int one_1 = 0; //기독교신앙의 기초1
+		int one_2 = 0; //기독교신앙의 기초2
+		int one_3 = 0; //세계관1
+		int one_4 = 0; //세계관2
+		int two = 0;
+		int two_1 = 0; // 공동체 리더십 훈련
+		int two_2 = 0; // 사회봉사
+		int two_3 = 0; // 한동인성교육
+		int three = 0;
+		int three_1 = 0; // 영어
+		int three_2 = 0; // EAP
+		int four = 0; // 수학 및 기초과학
+		int five = 0; // ICT융합기초
+		int six = 0; // 전문 교양
+		int major = 0; // 전공
+		int major_count = 0; // 전공필수
+		int major_design = 0; // 설계
+		int culture = 0; // 교양
+		int total = 0;
+
+		HttpSession session = request.getSession();
+		
+		SubjectUserCheckVO co = new SubjectUserCheckVO();
+		
+		for (SubjectUserVO vo : userService.gettotal()) {
+
+			if (vo.getUserid().equals((session).getAttribute("login"))) {
+				
+				if(vo.getSubname().contains("채플"))
+					zero++;
+				else if(vo.getArea3().equals("기독교신앙의 기초1"))
+					one_1 += vo.getCredit();
+				else if(vo.getArea3().equals("기독교신앙의 기초2"))
+					one_2 += vo.getCredit();
+				else if(vo.getArea3().equals("세계관1"))
+					one_3 += vo.getCredit();
+				else if(vo.getArea3().equals("세계관2"))
+					one_4 += vo.getCredit();
+				
+				else if(vo.getSubname().contains("공동체 리더십 훈련"))
+					two_1 += vo.getCredit();
+				else if(vo.getSubname().contains("사회봉사"))
+					two_2 += vo.getCredit();
+				else if(vo.getSubname().equals("한동인성교육"))
+					two_3 += vo.getCredit();
+				
+				else if(vo.getArea3().equals("영어1")) {
+					if(vo.getSubname().contains("EAP"))
+						three_2 += vo.getCredit();
+					else
+						three_1 += vo.getCredit();
+				}
+				
+				else if (vo.getSeq() == 184 || vo.getSeq() == 189 || vo.getSeq() == 188 || vo.getSeq() == 183)
+					five += vo.getCredit();
+				
+				
+				
+				else if((vo.getSeq() != 219 && vo.getArea1().equals("전공")) || vo.getSeq() == 187 ) {
+					if(vo.getSepar().equals("전공필수"))
+						major_count++;
+					
+					major += vo.getCredit();
+					major_design += vo.getDesign();
+				}
+				
+				else
+					culture += vo.getCredit();
+				
+				if(vo.getBsm() != 0)
+					four = vo.getBsm();
+				
+				if(vo.getPro() != 0)
+					six += vo.getPro();
+				
+				one = one_1 + one_2 + one_3 + one_4;
+				two = two_1 + two_2 + two_3;
+				three = three_1 + three_2;
+				culture = culture + one + two + three + four + five + six;
+				total = culture + major;
+			}
+		}
+		
+		if(zero >= 6) {
+			if(one_1 >= 2 && one_2 >= 2 && one_3 >=2 && one_4 >=3) {
+				if(two_1 >= 6 && two_2 >= 2 && two_3 >= 1) {
+					if(three_2 >= 3) {
+						if(four >= 18) {
+							if(four >= 18) {
+								if(five >= 5) {
+									if(major_count >= 11) {
+										if(major_design >= 12) {
+											if(major >= 60) {
+												if(total >= 130) {
+													co.setPass("PASS");
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		else
+			co.setPass("Fail");
+		
+		
+		co.setZero(zero);
+		co.setOne(one);
+		co.setOne_1(one_1);
+		co.setOne_2(one_2);
+		co.setOne_3(one_3);
+		co.setOne_4(one_4);
+		co.setTwo(two);
+		co.setTwo_1(two_1);
+		co.setTwo_2(two_2);
+		co.setTwo_3(two_3);
+		co.setThree(three);
+		co.setThree_1(three_1);
+		co.setThree_2(three_2);
+		co.setFour(four);
+		co.setFive(five);
+		co.setSix(six);
+		co.setMajor(major);
+		co.setMajor_count(major_count);
+		co.setMajor_design(major_design);
+		co.setCulture(culture);
+		co.setTotal(total);
+		
+		System.out.println(total);
+		
+		model.addAttribute("list", co);
+
+		return "total";
+	}
 
 }
+
