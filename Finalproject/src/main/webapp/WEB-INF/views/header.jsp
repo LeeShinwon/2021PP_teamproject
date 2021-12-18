@@ -30,7 +30,7 @@
 		<li><a href="javascript:go(6)">6학기</a></li>
 		<li><a href="javascript:go(7)">7학기</a></li>
 		<li><a href="javascript:go(8)">8학기</a></li>
-		<li><a href="#" value="졸업학점">졸업학점계산</a></li>
+		<li><a href="/my/subjectuser/total" value="졸업학점">졸업학점계산</a></li>
 	</ul>
 	</form>
 </div>
