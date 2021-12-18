@@ -21,7 +21,7 @@
         <ul class="sidebar-nav">
         
           <li class="sidebar-brand selected_menu">
-          <a href="/my/subjectuser/list">전체 학기</a></li>
+          <a href="javascript:go('list')">전체 학기</a></li>
 		<li ><a href="javascript:go(1)">1학기</a></li>
 		<li><a href="javascript:go(2)">2학기</a></li>
 		<li><a href="javascript:go(3)">3학기</a></li>
@@ -30,7 +30,7 @@
 		<li><a href="javascript:go(6)">6학기</a></li>
 		<li><a href="javascript:go(7)">7학기</a></li>
 		<li><a href="javascript:go(8)">8학기</a></li>
-		<li><a href="/my/subjectuser/total" value="졸업학점">졸업학점계산</a></li>
+		<li><a href="javascript:go('total')">졸업학점계산</a></li>
 	</ul>
 	</form>
 </div>

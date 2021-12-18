@@ -86,38 +86,47 @@ body {
 		<table id="list" width="90%">
 			<tr>
 				<th>영역</th>
-				<th>학점</th>
+				<th>필요 학점</th>
+				<th>이수 학점</th>
 			</tr>
 			<tr>
 				<td>신앙 및 세계관</td>
+				<td>9</td>
 				<td>${list.one}</td>
 			</tr>
 			<tr>
 				<td>인성 및 리더십</td>
+				<td>6</td>
 				<td>${list.two}</td>
 			</tr>
 			<tr>
 				<td>영어1</td>
+				<td>3~12</td>
 				<td>${list.three}</td>
 			</tr>
 			<tr>
 				<td>수학 및 기초과학</td>
+				<td>18</td>
 				<td>${list.four}</td>
 			</tr>
 			<tr>
 				<td>ICT융합기초</td>
+				<td>2</td>
 				<td>${list.five}</td>
 			</tr>
 			<tr>
 				<td>전문 교양</td>
+				<td>5</td>
 				<td>${list.six}</td>
 			</tr>
 			<tr>
 				<td>전공(설계)</td>
+				<td>60(12)</td>
 				<td>${list.major}(${list.major_design})</td>
 			</tr>
 			<tr>
 				<td>합계</td>
+				<td>130</td>
 				<td>${list.total}</td>
 			</tr>
 		</table>
