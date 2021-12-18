@@ -35,7 +35,10 @@ public class SubjectUserServiceimpl implements SubjectUserService{
 	public List<SubjectUserVO> getUserList() {
 		return userDAO.getUserList();
 	}
-	
+	@Override
+	public List<SubjectUserVO> gettotal() {
+		return userDAO.gettotal();
+	}
 
 	
 }

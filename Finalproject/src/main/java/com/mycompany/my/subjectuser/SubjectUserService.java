@@ -15,4 +15,5 @@ public interface SubjectUserService {
 
 	public List<SubjectUserVO> getUserList();
 	
+	public List<SubjectUserVO> gettotal();
 }
