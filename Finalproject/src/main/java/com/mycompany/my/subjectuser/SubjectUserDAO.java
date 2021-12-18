@@ -36,7 +36,10 @@ public class SubjectUserDAO {
 		List<SubjectUserVO> list = sqlSession.selectList("SubjectUser.getUserList");
 		return list;
 	}
-	
+	public List<SubjectUserVO> gettotal() {
+		List<SubjectUserVO> list = sqlSession.selectList("SubjectUser.getUserList");
+		return list;
+	}
 	
 	
 
